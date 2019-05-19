@@ -1,0 +1,14 @@
+node {
+   def mvnHome
+   stage('Preparation') { // for display purposes
+      git 'https://github.com/vladhirshberg/python-webcrawl'
+   }
+   stage('Confirm MD5') {
+      sh 'md5sum -c MD5.txt'
+   }
+   stage('Run python')
+      sh 'python crawler.py'
+   stage('Confirm JSON') {
+      sh 'python -m json.tool forcast_data.json'
+   }
+}

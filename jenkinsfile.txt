@@ -5,8 +5,9 @@ node {
    stage('Confirm MD5') {
       sh 'md5sum -c MD5.txt'
    }
-   stage('Run python')
+   stage('Run python') {
       sh 'python crawler.py'
+   }
    stage('Confirm JSON') {
       sh 'python -m json.tool forcast_data.json'
    }
